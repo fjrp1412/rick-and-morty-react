@@ -54,3 +54,10 @@ header .Header__api {
   background-position: center;
   background-size: cover;
 }
+
+.Characters__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
