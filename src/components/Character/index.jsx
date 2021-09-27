@@ -27,14 +27,14 @@ const CharacterUI = styled.div`
   border: solid 1px var(--border-color);
 `;
 
-const Character = () => {
+const Character = ({ name, location, status, image }) => {
   return (
     <CharacterUI>
-      <CharacterImage src="../../assets/images/rick.jpeg" alt="rick" />
+      <CharacterImage src={image} alt={name} />
       <CharacterInfo>
-        <span>Rick Sanchez</span>
-        <span>Earth C-77</span>
-        <span>Alive</span>
+        <span>{name}</span>
+        <span>{location}</span>
+        <span>{status}</span>
       </CharacterInfo>
     </CharacterUI>
   );
