@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-
-const Title = styled.h1`
-  color: red;
-`;
+import { Header } from '../Header';
 
 const App = () => {
-  return <Title>Hola mundo</Title>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 export { App };
