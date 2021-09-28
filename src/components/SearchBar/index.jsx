@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const SearchBarUI = styled.input`
-  width: calc(100% - 200px);
+  width: 50%;
+  min-width: 380px;
   height: 40px;
   border-radius: 25px;
   text-align: center;
