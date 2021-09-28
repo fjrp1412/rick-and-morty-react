@@ -10,17 +10,21 @@ const SearchBarUI = styled.input`
   background-color: rgba(255, 255, 255, 0.6);
 `;
 
-const SearchBar = ({ setCharacters, characters }) => {
-  const [search, setSearch] = useState('');
+const SearchBar = ({
+  setSearchedCaracters,
+  characters,
+  setSearchText,
+  searchText,
+}) => {
   const handleSearch = event => {
     const text = event.target.value;
     const newCharacters = characters.filter(character =>
-      character.name.toLowerCase().includes(text)
+      character.name.toLowerCase().includes(text.toLowerCase())
     );
-    setCharacters(newCharacters);
-    setSearch(text);
+    setSearchedCaracters(newCharacters.length > 0 ? newCharacters : characters);
+    setSearchText(text);
   };
 
-  return <SearchBarUI value={search} onChange={handleSearch} />;
+  return <SearchBarUI value={searchText} onChange={handleSearch} />;
 };
 export { SearchBar };

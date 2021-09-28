@@ -7,9 +7,15 @@ import { SearchBar } from '../SearchBar';
 import { useApi } from '../../hooks/useApi';
 
 const App = () => {
-  const { characters, setCharacters, mainCharacters } = useApi(
+  const { characters, setCharacters } = useApi(
     'https://rickandmortyapi.com/api/character'
   );
+  const mainCharacters = characters.slice(0, 5);
+  const [searchedCharacters, setSearchedCaracters] = useState(characters);
+  useEffect(() => {
+    setSearchedCaracters(characters);
+  }, [characters]);
+  const [searchText, setSearchText] = useState('');
 
   return (
     <>
@@ -30,9 +36,14 @@ const App = () => {
       </section>
       <section className="Characters__container">
         <Title text="All Characters" />
-        <SearchBar setCharacters={setCharacters} characters={characters} />
+        <SearchBar
+          searchText={searchText}
+          setSearchText={setSearchText}
+          setSearchedCaracters={setSearchedCaracters}
+          characters={characters}
+        />
         <ContainerCharacters>
-          {characters.map(character => (
+          {searchedCharacters.map(character => (
             <Character
               key={character.id}
               name={character.name}
