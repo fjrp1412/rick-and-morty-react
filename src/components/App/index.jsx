@@ -4,18 +4,18 @@ import { ContainerCharacters } from '../../containers/ContainerCharacters';
 import { Character } from '../Character';
 import { Title } from '../Title';
 import { SearchBar } from '../SearchBar';
+import { LoadMoreButton } from '../LoadMoreButton';
 import { useApi } from '../../hooks/useApi';
 
 const App = () => {
-  const { characters, setCharacters } = useApi(
-    'https://rickandmortyapi.com/api/character'
-  );
+  const { characters, setCharacters, url, setUrl } = useApi();
   const mainCharacters = characters.slice(0, 5);
   const [searchedCharacters, setSearchedCaracters] = useState(characters);
+  const [searchText, setSearchText] = useState('');
+
   useEffect(() => {
     setSearchedCaracters(characters);
   }, [characters]);
-  const [searchText, setSearchText] = useState('');
 
   return (
     <>
@@ -53,6 +53,14 @@ const App = () => {
             />
           ))}
         </ContainerCharacters>
+        {!!url && (
+          <LoadMoreButton
+            url={url}
+            setCharacters={setCharacters}
+            characters={characters}
+            setUrl={setUrl}
+          />
+        )}
       </section>
     </>
   );

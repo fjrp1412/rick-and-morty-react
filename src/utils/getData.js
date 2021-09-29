@@ -1,13 +1,12 @@
 const getData = async url => {
-  let characters;
+  let data;
   try {
     const response = await fetch(url);
-    const data = await response.json();
-    characters = data.results;
+    data = await response.json();
   } catch (error) {
-    console.log('error');
+    console.log('error get data');
   }
-  return { characters };
+  return { data };
 };
 
 export { getData };

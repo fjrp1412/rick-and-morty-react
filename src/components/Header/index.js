@@ -12,6 +12,10 @@ const HeaderIcon = styled.span`
   background-position: center;
   background-size: contain;
   margin: 30px;
+
+  @media only screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const HeaderTitle = styled.span`
