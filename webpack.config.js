@@ -2,6 +2,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 module.exports = {
   entry: './src/index',
@@ -11,7 +13,7 @@ module.exports = {
     publicPath: '/',
   },
 
-  mode: 'producion',
+  mode: 'production',
 
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -71,5 +73,8 @@ module.exports = {
       ],
     }),
   ],
-  
+  optimization: {
+    minimize: true,
+    minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+  },
 };

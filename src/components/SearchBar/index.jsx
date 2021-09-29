@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const SearchBarUI = styled.input`
   width: 70%;
+  max-width: 720px;
   margin-top: 20px;
   height: 30px;
   border-radius: 25px;
